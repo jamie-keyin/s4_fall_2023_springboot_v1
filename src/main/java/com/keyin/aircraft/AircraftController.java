@@ -17,6 +17,15 @@ public class AircraftController {
         return aircraftService.getAllAircraft();
     }
 
+    @GetMapping("/aircraft_search")
+    public List<Aircraft> getAircraftByPrams(@RequestParam String aircraftType) {
+        AircraftSearchPrams aircraftSearchPrams = new AircraftSearchPrams();
+
+        aircraftSearchPrams.setType(aircraftType);
+
+        return aircraftService.findAircraftByPrams(aircraftSearchPrams);
+    }
+
     @PostMapping("/aircraft")
     public Aircraft createNewAircraft(@RequestBody Aircraft aircraft) {
         return aircraftService.createAircraft(aircraft);
