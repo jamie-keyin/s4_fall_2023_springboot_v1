@@ -17,7 +17,18 @@ public class AircraftService {
     }
 
     public List<Aircraft> findAircraftByPrams(AircraftSearchPrams aircraftSearchPrams) {
-        return aircraftRepository.findByType(aircraftSearchPrams.getType());
+        List<Aircraft> resutList = new ArrayList<Aircraft>();
+        
+        String tailNumber = aircraftSearchPrams.getTailNumber();
+        String type = aircraftSearchPrams.getType();
+
+        if (tailNumber != null) {
+            resutList  = aircraftRepository.findByTailNumber(tailNumber);
+        } else if (type != null) {
+            resutList = aircraftRepository.findByType(aircraftSearchPrams.getType());;
+        }
+
+        return resutList;
     }
 
     public Aircraft createAircraft(Aircraft aircraft) {
