@@ -1,9 +1,9 @@
 package com.keyin.aircraft;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import com.keyin.airport.Airport;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Aircraft {
@@ -15,6 +15,9 @@ public class Aircraft {
     private String type;
     private String brand;
     private String model;
+
+    @ManyToMany
+    private List<Airport> airports;
 
     public long getId() {
         return id;
