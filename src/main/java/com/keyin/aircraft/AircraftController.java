@@ -18,11 +18,11 @@ public class AircraftController {
     }
 
     @GetMapping("/aircraft_search")
-    public List<Aircraft> getAircraftByPrams(@RequestParam String aircraftType, @RequestParam String tailNumber) {
+    public List<Aircraft> getAircraftByPrams(@RequestParam(required = false) String aircraftType, @RequestParam(required = false) String tailNumber) {
         AircraftSearchPrams aircraftSearchPrams = new AircraftSearchPrams();
 
         aircraftSearchPrams.setType(aircraftType);
-        aircraftSearchPrams.setType(tailNumber);
+        aircraftSearchPrams.setTailNumber(tailNumber);
 
         return aircraftService.findAircraftByPrams(aircraftSearchPrams);
     }
